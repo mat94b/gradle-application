@@ -1,0 +1,32 @@
+group 'org.mateusz.buc'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+
+resources {
+    srcDirs "build/classes/main/frames"
+}
+
+repositories {
+    mavenCentral()
+}
+
+clean {
+    dependsOn ":sub:clean"
+}
+javadoc {
+    source = sourceSets.main.allJava
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile project(":sub")
+}
